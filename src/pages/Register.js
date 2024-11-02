@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confrimPass, setConfirmPass] = useState('');
+
     const [submitBtn, setSubmitBtn] = useState(false);
 
     const register = async (e) => {
@@ -62,16 +64,17 @@ export default function Register() {
     }
 
     useEffect(() => {
-        if(email !== "" && password !== "") {
+        if(email !== "" && password !== "" && confrimPass !== "" && (password === confrimPass)) {
             setSubmitBtn(true);
         } else {
             setSubmitBtn(false);
         }
-    }, [email, password])
+    }, [email, password, confrimPass])
 
     return (
         <Container className="mt-5 mb-5 h-75 d-flex flex-column">
-            <h1 className="tagline mt-5 mb-5 mx-auto text-light fw-bolder text-center">Unleash Your Potential: Fitness Starts Here!</h1>
+            <h1 className="tagline mt-5 mb-5 mx-auto text-light fw-bolder text-center">Make your moment relaxing, watch free movies Here!</h1>
+
             <Row className="my-auto pb-5">
                 <Col className="mx-auto" xs={12} sm={9} md={7} lg={5}>
                     <Form onSubmit={(e) => register(e)} className="rounded p-4 shadow bg-light">
@@ -90,6 +93,15 @@ export default function Register() {
                             <Form.Control type="password" required placeholder="Enter password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                            />
+                            {/* <span className="text-danger">Password must be atleast 8 characters</span> */}
+                        </Form.Group>
+
+                        <Form.Group className="mb-4">
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control type="password" required placeholder="Enter password"
+                                value={confrimPass}
+                                onChange={(e) => setConfirmPass(e.target.value)}
                             />
                             <span className="text-danger">Password must be atleast 8 characters</span>
                         </Form.Group>

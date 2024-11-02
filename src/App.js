@@ -8,8 +8,6 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Workout from './pages/Workout';
-import CompleteWorkout from './pages/CompletedWorkout';
 import Logout from './components/Logout';
 import Footer from './components/Footer';
 
@@ -28,7 +26,7 @@ function App() {
     //     const fetchData = async () => {
     //         try {
     //             if(localStorage.getItem('token') !== null) {
-    //                const response = await fetch(`https://fitnessapp-api-ln8u.onrender.com/users/details`, {
+    //                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/details`, {
     //                     headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
     //                 })
                     
@@ -62,12 +60,10 @@ function App() {
                 <NavBar />
                 <Container className='bg-secondary main-container' fluid>
                     <Routes>
-                        <Route path='/' element={<Workout />}/>
+                        <Route path='/' element={<Login />}/>
                         <Route path='/register' element={<Register />}/>
                         <Route path='/login' element={<Login />}/>
                         <Route path='/logout' element={<Logout />}/>
-                        {/* <Route path='/workouts' element={<Workout />}/>
-                        <Route path='/completed' element={<CompleteWorkout />}/> */}
                     </Routes>
                 </Container>
                 <Footer />

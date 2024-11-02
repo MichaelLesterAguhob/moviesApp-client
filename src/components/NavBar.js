@@ -14,12 +14,12 @@ export default function NavBar() {
     }
     window.addEventListener('resize', () => {
         const viewportWidth = window.innerWidth;
-        // console.log(`Viewport width: ${viewportWidth}px`);
     });
+
     return (
-        <Navbar bg="primary" expand="lg" fixed="top" className="text-light">
+        <Navbar bg="dark" expand="lg" fixed="top" className="text-light">
             <Container fluid>
-                <Navbar.Brand as={Link} to="/" className='text-light'>Movies</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" className='text-light'>M O V</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-light" ref={toggler}/>
                 <Navbar.Collapse id="basic-navbar-nav">
                    
@@ -28,8 +28,7 @@ export default function NavBar() {
                         user.id !== null ?
                         <>
                             <Nav className="mx-auto" >
-                                <Nav.Link onClick={() => closeNavbar()} className='text-light' as={NavLink} to="/workouts" exact="true">Workout</Nav.Link>
-                                <Nav.Link onClick={() => closeNavbar()} className='text-light' as={NavLink} to="/completed" exact="true">Completed</Nav.Link>
+                                <Nav.Link onClick={() => closeNavbar()} className='text-light' as={NavLink} to="/movies" exact="true">Movies</Nav.Link>
                             </Nav>
                             <Nav>
                                 <Nav.Link onClick={() => closeNavbar()} className='text-light text-center bg-danger rounded' as={NavLink} to="/logout" exact="true">Logout</Nav.Link>
