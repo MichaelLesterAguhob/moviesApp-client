@@ -38,7 +38,9 @@ export default function Login() {
   
                 if(data.access) {
                     localStorage.setItem('token', data.access);
-                    // getUserDetails(data.access);
+                    getUserDetails(data.access);
+                    setEmail('');
+                    setPassword('');
                     Swal.fire({
                         title: 'Login Successfully',
                         icon: 'success',
@@ -74,34 +76,36 @@ export default function Login() {
         }
     }
 
-//    const getUserDetails = async (token) => {
-//         try {
-//             const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/details`, {
-//                 headers: {
-//                     Authorization: `Bearer ${token}`
-//                 }
-//             })
+   const getUserDetails = async (token) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/details`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
 
-//             if(!response.ok) {
-//                 let responseData = await response.json();
-//                 throw new Error(responseData.error || "Error on getting user details")
-//             }
+            if(!response.ok) {
+                let responseData = await response.json();
+                throw new Error(responseData.error || "Error on getting user details")
+            }
 
-//             const data = await response.json();
-//             if(data) {
-//                 setUser({
-//                     id: data.user.id
-//                 })
-//             } else {
-//                 setUser({
-//                     id: null
-//                 })
-//             }
+            const data = await response.json();
+            if(data) {
+                setUser({
+                    _id: data.user._id,
+                    isAdmin: data.user.isAdmin
+                })
+            } else {
+                setUser({
+                    _id: null,
+                    isAdmin: null
+                })
+            }
 
-//         } catch (error) {
-//             console.error(error);
-//         }
-//    }
+        } catch (error) {
+            console.error(error);
+        }
+   }
         
 
     useEffect(() => {
@@ -113,14 +117,14 @@ export default function Login() {
     }, [email, password])
 
     return (
-        (user.id !== null) ?
+        (user._id !== null) ?
         <Navigate to={'/movies'} />
         :
         <Container className="mt-5 h-75 d-flex flex-column">
-            <h1 className="tagline mt-5 mb-5 mx-auto text-light fw-bolder text-center">Make your moment relaxing, watch free movies Here!</h1>
+            <h1 className="tagline mt-5 mb-5 mx-auto text-light fw-bolder text-center">Just relax and watch our free movies Here!</h1>
             <Row className="my-auto pb-5">
                 <Col className="mx-auto" xs={12} sm={9} md={7} lg={5}>
-                    <Form onSubmit={(e) => login(e)} className="rounded p-4 shadow  bg-light">
+                    <Form onSubmit={(e) => login(e)} className="text-light rounded p-4 shadow login">
                         <h1 className="text-center mb-4">Login</h1>
                         <Form.Group className="mb-4">
                             <Form.Label>Email</Form.Label>

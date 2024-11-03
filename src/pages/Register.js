@@ -40,6 +40,7 @@ export default function Register() {
                     })
                     setEmail('');
                     setPassword('');
+                    setConfirmPass('');
                 } else if(data.error === "Password must be atleast 8 characters") {
                     Swal.fire({
                         title: data.error,
@@ -73,11 +74,11 @@ export default function Register() {
 
     return (
         <Container className="mt-5 mb-5 h-75 d-flex flex-column">
-            <h1 className="tagline mt-5 mb-5 mx-auto text-light fw-bolder text-center">Make your moment relaxing, watch free movies Here!</h1>
+            <h1 className="tagline mt-5 mb-5 mx-auto text-light fw-bolder text-center">Just relax and watch our free movies Here!</h1>
 
             <Row className="my-auto pb-5">
                 <Col className="mx-auto" xs={12} sm={9} md={7} lg={5}>
-                    <Form onSubmit={(e) => register(e)} className="rounded p-4 shadow bg-light">
+                    <Form onSubmit={(e) => register(e)} className="text-light rounded p-4 shadow register">
                         <h1 className="text-center mb-4">Register</h1>
                         
                         <Form.Group className="mb-4">

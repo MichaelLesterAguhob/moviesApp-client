@@ -25,7 +25,7 @@ export default function NavBar() {
                    
 
                     {
-                        user.id !== null ?
+                        user._id !== null ?
                         <>
                             <Nav className="mx-auto" >
                                 <Nav.Link onClick={() => closeNavbar()} className='text-light' as={NavLink} to="/movies" exact="true">Movies</Nav.Link>

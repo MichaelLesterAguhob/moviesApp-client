@@ -8,7 +8,8 @@ export default function Logout() {
     unsetUser();
     useEffect(() => {
         setUser({
-            id: null
+            _id: null,
+            isAdmin: null
         })
     })
    
