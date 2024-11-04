@@ -64,15 +64,48 @@ html{
     font-size: 1.1rem;
 }
 
-.tagline{
-    font-size: 2.5rem;
-} 
-
-.workoutCardContainer{
-    backdrop-filter: blur(10px);
-    z-index: -1;
-}
 
 .login, .register {
     backdrop-filter: blur(20px);
+}
+
+.moviesCardRow{
+    height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(3px);
+}
+
+.moviesCard {
+    width: 100%;
+    min-height: 420px;
+    max-height: 420px;
+}
+
+.card-title{
+    min-height: 100px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.title{
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.genreDirector{
+    min-height: 70px;
+    max-height: 70px;
+    overflow-y: auto;
+}
+
+.card-body .movieDescription{
+    min-height: 115px;
+    max-height: 115px;
+    overflow-y: auto;
+}
+
+.comment-input{
+    min-height: 100px;
+    max-height: 100px;
+    resize: none;
 }

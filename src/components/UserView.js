@@ -20,9 +20,9 @@ export default function UserView() {
             
             const data = await responseData.json();
             if(data) {
-                setMovies(data.movies.map((movie, index) => {
+                setMovies(data.movies.map((movie) => {
                     return (
-                        <MoviesCard moviesData={movies} />
+                        <MoviesCard key={movie._id} movie={movie} />
                     )
                 })) 
             }
@@ -37,11 +37,10 @@ export default function UserView() {
     }, [])
 
     return (
-        <Container className="mt-5">
+        <Container className="mt-5" fluid> 
             <h1 className="text-light">Movies</h1>
 
-            <Row className="bg-primary h-50">
-                 <h1 className="text-light">Movies</h1>
+            <Row className="moviesCardRow d-flex justify-content-center">
                  {movies}
             </Row>
         </Container>
